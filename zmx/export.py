@@ -19,4 +19,8 @@ def zsh_links():
 
     return [
         (cwd / "plugins" / "zmx-picker" / "zp", Path.home() / ".local" / "bin" / "zp"),
+        (
+            cwd / "plugins" / "zmx-picker" / "zp-select",
+            Path.home() / ".local" / "bin" / "zp-select",
+        ),
     ]

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+SESSION_FILE="$HOME/.zmx_sessions"
+
+save_sessions() {
+  zmx list | grep -oP 'name=\K[^[:space:]]+|cwd=\K[^[:space:]]+' |
+    paste -d'<' - - >"$SESSION_FILE"
+  echo "Saved sessions to $SESSION_FILE"
+}
+
+list_sessions() {
+  while IFS='<' read -r name cwd_url; do
+    echo "name=$name, cwd=$cwd_url"
+  done <"$SESSION_FILE"
+}
+
+restore_sessions() {
+  while IFS='<' read -r name cwd_url; do
+    echo "$name:$cwd_url"
+    (
+      cwd_path="/${cwd_url#file://*/}"
+      cd "$cwd_path" || exit 1
+      zmx a "$name"
+    )
+  done <"$SESSION_FILE"
+  wait
+  echo "Restored sessions from $SESSION_FILE"
+}
+
+case "$1" in
+save) save_sessions ;;
+list) list_sessions ;;
+restore) restore_sessions ;;
+*)
+  echo "Usage: $0 {save|restore}"
+  exit 1
+  ;;
+esac

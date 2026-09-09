@@ -372,7 +372,7 @@ binds {
     Mod+E hotkey-overlay-title="Pick emoji" { spawn-sh "rofi -modi emoji -show emoji"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+W hotkey-overlay-title="Toggle Wayscriber" { spawn-sh "wayscriber --daemon-toggle --no-resume-session"; }
@@ -380,6 +380,9 @@ binds {
     Super+S hotkey-overlay-title="Take screenshot" { spawn-sh "quickshell -c HyprQuickFrame -n"; }
 
     Mod+N { spawn-sh "export PATH=\"$HOME/.local/share/omarchy/bin:$PATH\"; omarchy-menu-custom-niri"; }
+
+    Mod+Alt+J { spawn-sh "bash ~/.config/niri/scripts/move-window-to-new-workspace.sh down"; }
+    Mod+Alt+K { spawn-sh "bash ~/.config/niri/scripts/move-window-to-new-workspace.sh up"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

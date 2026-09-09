@@ -35,6 +35,15 @@ for f in "$ZDOTDIR/source"/*; do
   zsh_add_file "$f"
 done
 
+for f in "$ZDOTDIR/scripts"/*; do
+  target="$HOME/.local/bin/$(basename "$f")"
+  if [ -f "$target" ]; then
+    continue
+  fi
+  ln -sT "$f" "$target"
+  chmod +x "$target"
+done
+
 for f in "$ZDOTDIR/file-plugins"/*; do
   zsh_add_file "$f"
 done

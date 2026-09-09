@@ -30,9 +30,17 @@ def Link(target: Pathlike, link: Pathlike) -> None:
 class ConfigRegister:
     name: str
     links_fn: Callable[[], Iterable[tuple[Pathlike, Pathlike]]] | None = None
+    install_fn: Callable[[], None] | None = None
 
     def __init__(self, name: str) -> None:
         self.name = name
+
+    def install(self):
+        def decorator(func: Callable[[], None]):
+            self.install_fn = func
+            return func
+
+        return decorator
 
     def links(self):
         def decorator(func: Callable[[], Iterable[tuple[Pathlike, Pathlike]]]):
@@ -46,6 +54,8 @@ class ConfigRegister:
             for target, link in self.links_fn():
                 # print(f"{target} -> {link}")
                 Link(target, link)
+        if self.install_fn is not None:
+            self.install_fn()
 
 
 class ConfigRegistry:

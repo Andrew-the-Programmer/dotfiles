@@ -15,6 +15,7 @@ def zsh_links():
         *[
             (cwd / s, config / s)
             for s in [
+                "scripts",
                 "source",
                 "plugins-config",
                 "file-plugins",

@@ -9,6 +9,7 @@ def niri_links():
     config = get_system_config_path() / "niri"
     return [
         (cwd / "config.kdl", config / "config.kdl"),
+        (cwd / "scripts", config / "scripts"),
         (
             cwd / "omarchy-menu-custom-niri",
             get_home_path() / ".local/share/omarchy/bin/omarchy-menu-custom-niri",
