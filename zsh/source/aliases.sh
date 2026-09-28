@@ -147,10 +147,7 @@ alias g='git'
 alias t='tailscale'
 alias tsa='tailscale status --active'
 alias sctl='sudo systemctl'
-
-function ChdirToScriptDir() {
-  cd "$(dirname "$0")" || return 1
-}
+alias sctlu='systemctl --user'
 
 function ldir() {
   find . -mindepth 1 -maxdepth 1 -type d \( ! -iname ".*" \) | sed 's|^\./||g'

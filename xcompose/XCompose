@@ -1,0 +1,11 @@
+include "%L"
+
+<Multi_key> <space> <space> : "—"
+
+<Multi_key> <a> <h> <h> : "⟵"
+<Multi_key> <a> <l> <l> : "⟶"
+<Multi_key> <a> <h> <l> : "⟷"
+
+<Multi_key> <d> <h> <h> : "⟸"
+<Multi_key> <d> <l> <l> : "⟹"
+<Multi_key> <d> <h> <l> : "⟺"

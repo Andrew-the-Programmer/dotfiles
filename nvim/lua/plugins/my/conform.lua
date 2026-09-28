@@ -4,6 +4,7 @@ return {
   opts = function(_, opts)
     local formatters_by_ft = {
       python = { "isort", "black" },
+      c = { "clang-format" },
       html = { "prettier" },
     }
     opts.formatters_by_ft = opts.formatters_by_ft or {}
